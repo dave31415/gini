@@ -3,6 +3,7 @@
 """
 
 import random
+import sys
 
 
 def gini(x):
@@ -98,5 +99,3 @@ def gini_after_action(gini_coeff_before, n_population, n_affected,
     print 'gini before: %s' % gini_before
     print 'gini after: %s' % gini_after
     return gini_after, income, income_adjusted
-
-
