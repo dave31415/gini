@@ -2,15 +2,21 @@
 
 Example
 
-Start python
+A country has a Geni of 0.4 starting out
+
+population is 1 million people
+
+Some action is going to affect 10% of people who are poor
+
+They are around the 10-th percentile before
+
+The action is going to increase their income by 50%
+
+Do this
+
+python
 
 import geni
-
-# A country has a Geni of 0.4 starting out
-# population is 1 million people
-# Some action is going to affect 10% of people who are poor
-# They are around the 10-th percentile before
-# The action is going to increase their income by 50%
 
 gini_before = 0.4
 
