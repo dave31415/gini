@@ -19,20 +19,28 @@ def gini(x):
     return 2*income_weighted_average_percentile - ((n+1)/n)
 
 
-def sample_pareto(n_samples, x_mode, alpha, seed=None):
+def sample_pareto(n_samples, x_mode, alpha, seed=None, use_random=False):
     """
     Sample from the pareto distribution
     :param n_samples: number of samples
     :param x_mode: The scale parameter, also the mode
     :param alpha: shape parameter
-    :param seed: random seed, default None
+    :param use_random: if true, uses a random dist
+            versus a true uniform distribution (default False)
+    :param seed: random seed, default None (only used
+            if use_random is True)
     :return:
     """
     if alpha <= 1.0:
         raise ValueError
     random.seed(seed)
     alpha_inv = 1.0/alpha
-    uniform = [1.0-random.random() for i in xrange(n_samples)]
+    if use_random:
+        # use a random sample
+        uniform = [1.0-random.random() for i in xrange(n_samples)]
+    else:
+        # use a true uniform distribution rather than random sample
+        uniform = [1.0-float(i)/n_samples for i in xrange(n_samples)]
     return [x_mode/(u**alpha_inv) for u in uniform]
 
 
@@ -69,7 +77,7 @@ def gini_after_action(gini_coeff_before, n_population, n_affected,
     :return:
     """
 
-    pop_max = 1e6
+    pop_max = 1e7
     if n_population > pop_max:
         # scale both numbers down to make it faster
         scale = pop_max/float(n_population)
@@ -101,4 +109,4 @@ def gini_after_action(gini_coeff_before, n_population, n_affected,
 
     print 'gini before: %s' % gini_before
     print 'gini after: %s' % gini_after
-    return gini_after, income, income_adjusted
+    return gini_before, gini_after

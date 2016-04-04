@@ -36,7 +36,7 @@ class TestSamplePareto(TestCase):
     def test_min(self):
         tol = 0.05
         self.assertEquals(len(self.x), self.num)
-        self.assertTrue(self.x_mode < min(self.x) < self.x_mode + tol)
+        self.assertTrue(self.x_mode <= min(self.x) < self.x_mode + tol)
 
     def test_mean(self):
         tol = 0.1
