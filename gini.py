@@ -65,7 +65,8 @@ def gini_to_pareto_alpha(gini_coeff):
 
 
 def gini_after_action(gini_coeff_before, n_population, n_affected,
-                      percentile_before, income_increase, seed=42):
+                      percentile_before, income_increase, seed=42,
+                      do_plot=False):
     """
     See how the Gini coefficient changes if you take some
     segment of the population and make them richer/poorer
@@ -109,4 +110,18 @@ def gini_after_action(gini_coeff_before, n_population, n_affected,
 
     print 'gini before: %s' % gini_before
     print 'gini after: %s' % gini_after
+
+    if do_plot:
+        from matplotlib import pylab as plt
+        plt.clf()
+        income_max = 1000
+        income_cut = [i for i in income if i < income_max]
+        income_adjusted_cut = [i for i in income_adjusted if i < income_max]
+
+        range = (0, 10)
+        n_bins = 200
+        plt.hist(income_cut, n_bins, alpha=0.3, range=range, label="Before")
+        plt.hist(income_adjusted_cut, n_bins, alpha=0.3, range=range, label="After")
     return gini_before, gini_after
+
+
