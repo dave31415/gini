@@ -29,4 +29,4 @@ perc_before = 0.1
 increase = 1.5
 
 geni_after = gini.gini_after_action(gini_before, pop, n_affected,
-                      perc_before, increase, seed=42)
+                      perc_before, increase)
