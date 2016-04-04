@@ -39,6 +39,7 @@ def sample_pareto(n_samples, x_mode, alpha, seed=None):
 
 def pareto_alpha_to_gini(alpha):
     """
+    Compute Geni coefficient from Pareto alpha param
     :param alpha: pareto shape parameter
     :return: the gini coefficient for this distribution
     """
@@ -49,6 +50,7 @@ def pareto_alpha_to_gini(alpha):
 
 def gini_to_pareto_alpha(gini_coeff):
     """
+    Compute Pareto alpha param from Geni coefficient
     :param gini_coeff: gini coeff
     :return: the pareto shape parameter
     """
@@ -58,6 +60,8 @@ def gini_to_pareto_alpha(gini_coeff):
 def gini_after_action(gini_coeff_before, n_population, n_affected,
                       percentile_before, income_increase, seed=42):
     """
+    See how the Gini coefficient changes if you take some
+    segment of the population and make them richer/poorer
     :param gini_coeff_before: initial gini coefficient
     :param n_population: size of population
     :param n_affected: number of people affected
