@@ -13,9 +13,13 @@ import geni
 # The action is going to increase their income by 50%
 
 gini_before = 0.4
+
 pop = 1e6
+
 n_affected = 1e5
+
 perc_before = 0.1
+
 increase = 1.5
 
 geni_after = gini.gini_after_action(gini_before, pop, n_affected,
