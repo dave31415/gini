@@ -3,7 +3,6 @@
 """
 
 import random
-import sys
 
 
 def gini(x):
